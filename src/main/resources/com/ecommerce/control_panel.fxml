@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecommerce.controller.ControlPanelController">
+
+    <Label text="Control Panel" textAlignment="CENTER">
+        <font>
+            <Font name="Ubuntu Mono Bold" size="20.0" />
+        </font>
+    </Label>
+
+    <Button fx:id="viewProductsButton" onAction="#handleViewProducts" prefWidth="200" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="🛍 Place Order" />
+
+    <Button fx:id="viewCustomersButton" onAction="#handleViewCustomers" prefWidth="200" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="👤 View Customers" />
+
+    <Button fx:id="viewOrdersButton" onAction="#handleViewOrders" prefWidth="200" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text="📦 View Orders" />
+    <Button fx:id="addExistingProductButton" onAction="#handleAddExistingProduct" prefWidth="200" style="-fx-background-color: #3a72b7; -fx-text-fill: white;" text="➕ Add Existing Product" />
+
+    <Button fx:id="addProductButton" onAction="#handleAddProduct" prefWidth="200" style="-fx-background-color: #673AB7; -fx-text-fill: white;" text="➕ Add New Product" />
+    <Button onAction="#handleBackup" prefWidth="200" style="-fx-background-color: #983ab7; -fx-text-fill: white;" text="Backup Database" />
+    <Button onAction="#handleRestore" prefWidth="200" style="-fx-background-color: #3ab7a8; -fx-text-fill: white;" text="Restore Database" />
+
+    <Button fx:id="backButton" onAction="#handleBack" prefWidth="200" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="🔙 Back" />
+</VBox>
