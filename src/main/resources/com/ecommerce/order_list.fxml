@@ -11,8 +11,7 @@
       spacing="20"
       style="-fx-background-color: linear-gradient(to bottom right, #fdfbfb, #ebedee); -fx-padding: 30;">
 
-    <Label text="📦 Order List"
-           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="📦 Order List" />
 
     <TableView fx:id="orderTable" prefHeight="300" prefWidth="900" style="-fx-background-color: white; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 2, 2);">
         <columns>
