@@ -39,7 +39,33 @@ public class DataService {
         }
         return null;
     }
-
+    public static Customer findCustomer(String customer_name, String phone) throws SQLException {
+        DatabaseService dbService = DatabaseService.getInstance();
+        System.out.println("Connecting "+dbService.getConnection());
+        Connection conn = dbService.getConnection();
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "SELECT * FROM customers WHERE customer_name = ? AND phone = ?")) {
+            stmt.setString(1, customer_name);
+            stmt.setString(2, phone);
+            System.out.println("Executing query to find user: " + customer_name);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Customer user = new Customer(
+                        rs.getString("id"),
+                        rs.getString("customer_name"),
+                        rs.getString("phone")
+                );
+                System.out.println("User found: " + user.getName());
+                return user;
+            } else {
+                System.out.println("No user found with username: " + customer_name);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error finding user: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public static void addProduct(Product product) {
         DatabaseService dbService = DatabaseService.getInstance();
