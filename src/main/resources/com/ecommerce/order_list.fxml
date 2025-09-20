@@ -2,14 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.ecommerce.controller.OrderListController"
-      alignment="CENTER"
-      spacing="20"
-      style="-fx-background-color: linear-gradient(to bottom right, #fdfbfb, #ebedee); -fx-padding: 30;">
+<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: linear-gradient(to bottom right, #fdfbfb, #ebedee); -fx-padding: 30;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecommerce.controller.OrderListController">
 
     <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="📦 Order List" />
 
