@@ -14,8 +14,7 @@
     <Label text="📦 Order List"
            style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
-    <TableView fx:id="orderTable" prefWidth="900" prefHeight="300"
-               style="-fx-background-color: white; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 2, 2);">
+    <TableView fx:id="orderTable" prefHeight="300" prefWidth="900" style="-fx-background-color: white; -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 2, 2);">
         <columns>
             <TableColumn fx:id="orderIdColumn" prefWidth="150" style="-fx-alignment: CENTER;" text="Order ID" />
             <TableColumn fx:id="customerNameColumn" prefWidth="150" style="-fx-alignment: CENTER-LEFT;" text="Customer" />
