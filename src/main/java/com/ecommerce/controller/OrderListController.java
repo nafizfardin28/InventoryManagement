@@ -46,7 +46,20 @@ public class OrderListController {
         QuantityColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getQuantity())));
         orderTable.getItems().addAll(DataService.getAllOrderDetails());
     }
-
+    @FXML
+    private void handleCustomerReport() throws IOException {
+        Stage stage = (Stage) orderTable.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/ecommerce/report_panel.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),600,400);
+        stage.setScene(scene);
+    }
+    @FXML
+    private void handleTotalReport() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ecommerce/report_panel.fxml"));
+        Stage stage = (Stage) orderTable.getScene().getWindow();
+        Scene scene = new Scene(loader.load());
+        stage.setScene(scene);
+    }
     @FXML
     private void handleBack() throws IOException {
         Stage stage = (Stage) orderTable.getScene().getWindow();
