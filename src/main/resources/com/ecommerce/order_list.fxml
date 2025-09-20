@@ -28,7 +28,19 @@
         </columns>
     </TableView>
 
-    <Button text="🔙 Back to Control Panel"
-            onAction="#handleBack"
-            style="-fx-font-size: 14px; -fx-padding: 10 20; -fx-background-color: #007bff; -fx-text-fill: white; -fx-background-radius: 8px;" />
+    <!-- Buttons HBox -->
+    <HBox prefWidth="900" spacing="10">
+        <!-- Left button: Customer Order Report -->
+        <Button onAction="#handleCustomerReport" prefHeight="40" prefWidth="180" style="-fx-font-size: 14px; -fx-background-color: #bf00ff; -fx-text-fill: white; -fx-background-radius: 8px;" text="Generate Customer Order Report" />
+
+        <!-- Spacer -->
+        <Region HBox.hgrow="ALWAYS" />
+
+        <!-- Right button: Total Order Report -->
+        <Button onAction="#handleTotalReport" prefHeight="40" prefWidth="180" style="-fx-font-size: 14px; -fx-background-color: #007bff; -fx-text-fill: white; -fx-background-radius: 8px;" text="Generate Total Order Report" />
+    </HBox>
+    <HBox alignment="CENTER">
+        <Button onAction="#handleBack" prefHeight="40" prefWidth="159.0" style="-fx-font-size: 14px;-fx-background-color: #bf00ff; -fx-text-fill: white; -fx-background-radius: 8px;" text="Back to Control Panel" />
+    </HBox>
+
 </VBox>
