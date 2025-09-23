@@ -77,22 +77,15 @@
                            -fx-background-radius: 10;
                            -fx-padding: 10 20;" />
 
-            <Button onAction="#handleRestore" prefWidth="220"
-                    text="Restore Database"
-                    style="-fx-background-color: linear-gradient(to right, #3ab7a8, #00897B);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
-
-            <Button fx:id="backButton" onAction="#handleBack" prefWidth="220"
-                    text="🔙 Back"
-                    style="-fx-background-color: linear-gradient(to right, #f44336, #c62828);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
-
+                <Button onAction="#handleRestore" prefWidth="220"
+                        text="Restore Database"
+                        style="-fx-background-color: linear-gradient(to right, #3ab7a8, #00897B);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10 20;" />
+            </VBox>
         </VBox>
-    </VBox>
-</StackPane>
+    </center>
+
+</BorderPane>
