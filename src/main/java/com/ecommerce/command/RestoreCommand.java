@@ -1,5 +1,8 @@
 package com.ecommerce.command;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,7 +13,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class RestoreCommand implements Command {
-
+    @FXML
+    Label label;
     private static final String BACKUP_ZIP = "./backup/ecommerce_backup.zip";
     private static final String DB_DIRECTORY = "./restore/";
 
@@ -50,7 +54,7 @@ public class RestoreCommand implements Command {
                 entry = zis.getNextEntry();
             }
         }
-
+        label.setText("Restore Successful");
         System.out.println("Database restored successfully to: " + DB_DIRECTORY);
     }
 }

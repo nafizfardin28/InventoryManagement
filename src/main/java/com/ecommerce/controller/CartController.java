@@ -72,7 +72,7 @@ public class CartController {
 
         });
 
-        List<Order> orders = DataService.getOrdersByCustomerName(username);
+        List<Order> orders = DataService.getOrdersByCustomer(username);
         orderTable.getItems().addAll(orders);
 
         recalculateTotal();
@@ -104,7 +104,7 @@ public class CartController {
                 if (success) {
                     // Reload the table
                     orderTable.getItems().clear();
-                    List<Order> updatedOrders = DataService.getOrdersByCustomerName(Session.getCurrentCustomerName());
+                    List<Order> updatedOrders = DataService.getOrdersByCustomer(Session.getCurrentCustomerName());
                     orderTable.getItems().addAll(updatedOrders);
                     recalculateTotal();
                 } else {

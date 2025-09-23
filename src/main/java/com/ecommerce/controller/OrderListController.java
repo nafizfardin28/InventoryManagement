@@ -1,7 +1,5 @@
 package com.ecommerce.controller;
 
-import com.ecommerce.model.Customer;
-import com.ecommerce.model.Order;
 import com.ecommerce.model.OrderDetails;
 import com.ecommerce.service.DataService;
 import com.ecommerce.session.Session;
@@ -33,7 +31,6 @@ public class OrderListController {
     private TableColumn<OrderDetails, String> phoneColumn;
     @FXML
     private TableColumn<OrderDetails, String> productNameColumn;
-
     @FXML
     private void initialize() {
         orderIdColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getOrderId()));
@@ -55,7 +52,7 @@ public class OrderListController {
     }
     @FXML
     private void handleTotalReport() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ecommerce/report_panel.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ecommerce/total_report_panel.fxml"));
         Stage stage = (Stage) orderTable.getScene().getWindow();
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);

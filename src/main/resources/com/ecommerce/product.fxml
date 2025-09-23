@@ -3,19 +3,51 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20" style="-fx-background-color: linear-gradient(to bottom right, #f0f4f8, #dfe9f3); -fx-padding: 30;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecommerce.controller.ProductController">
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ecommerce.controller.ProductController"
+           style="-fx-background-color: linear-gradient(to bottom, #eef2f3, #ffffff);">
 
-    <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="🛒 Product List" />
+    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
 
-    <TableView fx:id="productTable" prefHeight="250" prefWidth="700" style="-fx-background-color: white; -fx-border-radius: 8px; -fx-background-radius: 8px;">
-        <columns>
-            <TableColumn fx:id="idColumn" prefWidth="100" style="-fx-alignment: CENTER;" text="ID" />
-            <TableColumn fx:id="nameColumn" prefWidth="200" style="-fx-alignment: CENTER-LEFT;" text="Name" />
-            <TableColumn fx:id="priceColumn" prefWidth="150" style="-fx-alignment: CENTER;" text="Price" />
-            <TableColumn fx:id="availableColumn" prefWidth="200" style="-fx-alignment: CENTER;" text="Available Pieces" />
-            <TableColumn fx:id="actionColumn" prefWidth="150" text="Update Stock" />
-        </columns>
-    </TableView>
-    <Button onAction="#handleBack" text="🔙 Back to Control Panel"
-            style="-fx-font-size: 14px; -fx-padding: 8 16; -fx-background-color: #007bff; -fx-text-fill: white; -fx-background-radius: 8px;" />
-</VBox>
+        <!-- Card Container -->
+        <VBox spacing="20" alignment="CENTER"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 16;
+                     -fx-padding: 30 40;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);">
+
+            <!-- Title -->
+            <Label text="🛒 Product List"
+                   style="-fx-font-size: 24px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #2c3e50;" />
+
+            <!-- Table -->
+            <TableView fx:id="productTable" prefHeight="280" prefWidth="720"
+                       style="-fx-background-radius: 12;
+                              -fx-border-radius: 12;
+                              -fx-border-color: #d0d7de;
+                              -fx-focus-color: transparent;
+                              -fx-table-cell-border-color: transparent;">
+                <columns>
+                    <TableColumn fx:id="idColumn" prefWidth="100" style="-fx-alignment: CENTER;" text="ID" />
+                    <TableColumn fx:id="nameColumn" prefWidth="200" style="-fx-alignment: CENTER-LEFT;" text="Name" />
+                    <TableColumn fx:id="priceColumn" prefWidth="150" style="-fx-alignment: CENTER;" text="Price" />
+                    <TableColumn fx:id="availableColumn" prefWidth="200" style="-fx-alignment: CENTER;" text="Available Pieces" />
+                    <TableColumn fx:id="actionColumn" prefWidth="150" style="-fx-alignment: CENTER;" text="Update Stock" />
+                </columns>
+            </TableView>
+
+            <!-- Back Button -->
+            <Button onAction="#handleBack" text="🔙 Back to Control Panel"
+                    style="-fx-font-size: 15px;
+                           -fx-font-weight: bold;
+                           -fx-padding: 10 25;
+                           -fx-background-color: linear-gradient(to right, #007bff, #0056b3);
+                           -fx-text-fill: white;
+                           -fx-background-radius: 10;
+                           -fx-cursor: hand;" />
+        </VBox>
+    </VBox>
+</StackPane>

@@ -55,7 +55,7 @@ public class ProductController {
 
                 addButton.setOnAction(e -> {
                     Product product = getTableView().getItems().get(getIndex());
-                    product.setAvailablePieces(product.getAvailablePieces() + 1);  // Observer notified
+                    product.setAvailablePieces(product.getAvailablePieces() + 1);
                     getTableView().refresh();
                     DataService.updateProductAvailablePieces(product.getId(), product.getAvailablePieces());
                 });
@@ -63,7 +63,7 @@ public class ProductController {
                 subButton.setOnAction(e -> {
                     Product product = getTableView().getItems().get(getIndex());
                     if (product.getAvailablePieces() > 0) {
-                        product.setAvailablePieces(product.getAvailablePieces() - 1);  // Observer notified
+                        product.setAvailablePieces(product.getAvailablePieces() - 1);
                         getTableView().refresh();
                         DataService.updateProductAvailablePieces(product.getId(), product.getAvailablePieces());
                     }

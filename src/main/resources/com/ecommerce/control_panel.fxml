@@ -4,24 +4,95 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecommerce.controller.ControlPanelController">
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ecommerce.controller.ControlPanelController"
+           style="-fx-background-color: linear-gradient(to bottom, #eef2f3, #ffffff);">
 
-    <Label text="Control Panel" textAlignment="CENTER">
-        <font>
-            <Font name="Ubuntu Mono Bold" size="20.0" />
-        </font>
-    </Label>
+    <VBox alignment="CENTER" spacing="20">
 
-    <Button fx:id="viewProductsButton" onAction="#handleViewProducts" prefWidth="200" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="🛍 Place Order" />
+        <!-- Card Container -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white;
+                     -fx-background-radius: 16;
+                     -fx-padding: 40 50;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);">
 
-    <Button fx:id="viewCustomersButton" onAction="#handleViewCustomers" prefWidth="200" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="👤 View Customers" />
+            <!-- Title -->
+            <Label text="Control Panel" textAlignment="CENTER">
+                <font>
+                    <Font name="Segoe UI Semibold" size="22.0" />
+                </font>
+                <style>
+                    -fx-text-fill: #2c3e50;
+                </style>
+            </Label>
 
-    <Button fx:id="viewOrdersButton" onAction="#handleViewOrders" prefWidth="200" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text="📦 View Orders" />
-    <Button fx:id="addExistingProductButton" onAction="#handleAddExistingProduct" prefWidth="200" style="-fx-background-color: #3a72b7; -fx-text-fill: white;" text="➕ Add Existing Product" />
+            <!-- Buttons -->
+            <Button fx:id="viewProductsButton" onAction="#handleViewProducts" prefWidth="220"
+                    text="🛍 Place Order"
+                    style="-fx-background-color: linear-gradient(to right, #4CAF50, #43a047);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
 
-    <Button fx:id="addProductButton" onAction="#handleAddProduct" prefWidth="200" style="-fx-background-color: #673AB7; -fx-text-fill: white;" text="➕ Add New Product" />
-    <Button onAction="#handleBackup" prefWidth="200" style="-fx-background-color: #983ab7; -fx-text-fill: white;" text="Backup Database" />
-    <Button onAction="#handleRestore" prefWidth="200" style="-fx-background-color: #3ab7a8; -fx-text-fill: white;" text="Restore Database" />
+            <Button fx:id="viewCustomersButton" onAction="#handleViewCustomers" prefWidth="220"
+                    text="👤 View Customers"
+                    style="-fx-background-color: linear-gradient(to right, #2196F3, #1976D2);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
 
-    <Button fx:id="backButton" onAction="#handleBack" prefWidth="200" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="🔙 Back" />
-</VBox>
+            <Button fx:id="viewOrdersButton" onAction="#handleViewOrders" prefWidth="220"
+                    text="📦 View Orders"
+                    style="-fx-background-color: linear-gradient(to right, #FF9800, #f57c00);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
+
+            <Button fx:id="addExistingProductButton" onAction="#handleAddExistingProduct" prefWidth="220"
+                    text="➕ Add Existing Product"
+                    style="-fx-background-color: linear-gradient(to right, #3a72b7, #2c528c);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
+
+            <Button fx:id="addProductButton" onAction="#handleAddProduct" prefWidth="220"
+                    text="➕ Add New Product"
+                    style="-fx-background-color: linear-gradient(to right, #673AB7, #512DA8);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
+
+            <Button onAction="#handleBackup" prefWidth="220"
+                    text="Backup Database"
+                    style="-fx-background-color: linear-gradient(to right, #983ab7, #6a1b9a);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
+
+            <Button onAction="#handleRestore" prefWidth="220"
+                    text="Restore Database"
+                    style="-fx-background-color: linear-gradient(to right, #3ab7a8, #00897B);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
+
+            <Button fx:id="backButton" onAction="#handleBack" prefWidth="220"
+                    text="🔙 Back"
+                    style="-fx-background-color: linear-gradient(to right, #f44336, #c62828);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;
+                           -fx-padding: 10 20;" />
+
+        </VBox>
+    </VBox>
+</StackPane>

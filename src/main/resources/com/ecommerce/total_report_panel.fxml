@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ecommerce.controller.TotalReportController"
+           style="-fx-background-color: linear-gradient(to bottom, #eef2f3, #ffffff);">
+
+    <BorderPane maxWidth="800" maxHeight="500" style="-fx-padding: 30;">
+
+        <!-- Left Section -->
+        <left>
+            <VBox alignment="CENTER" prefWidth="300"
+                  style="-fx-background-color: #2f2163;
+                         -fx-background-radius: 16;
+                         -fx-padding: 30;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);">
+                <Label text="IIT Super Shop"
+                       style="-fx-font-size: 28px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: white;" />
+            </VBox>
+        </left>
+
+        <!-- Center Section -->
+        <center>
+            <VBox spacing="20" alignment="CENTER"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 16;
+                         -fx-padding: 30;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 12, 0, 0, 6);">
+
+                <!-- Date Pickers -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Label text="From:" style="-fx-font-weight: bold;"/>
+                    <DatePicker fx:id="fromDatePicker" style="-fx-background-radius: 6px;"/>
+                </HBox>
+
+                <HBox spacing="10" alignment="CENTER">
+                    <Label text="To:" style="-fx-font-weight: bold;"/>
+                    <DatePicker fx:id="toDatePicker" style="-fx-background-radius: 6px;"/>
+                </HBox>
+
+                <!-- Format Choice -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Label text="Export As:" style="-fx-font-weight: bold;"/>
+                    <ChoiceBox fx:id="formatChoiceBox" style="-fx-background-radius: 6px;"/>
+                </HBox>
+
+                <!-- Action Button -->
+                <Button text="Generate Report" onAction="#handleTotalReport"
+                        style="-fx-font-size: 14px;
+                               -fx-font-weight: bold;
+                               -fx-padding: 10 20;
+                               -fx-background-color: linear-gradient(to right, #214263, #1a3550);
+                               -fx-text-fill: white;
+                               -fx-background-radius: 10;
+                               -fx-cursor: hand;" />
+
+                <!-- Error / Status Label -->
+                <Label fx:id="totalLabel"
+                       style="-fx-font-size: 12px; -fx-text-fill: red;" />
+            </VBox>
+        </center>
+    </BorderPane>
+</StackPane>

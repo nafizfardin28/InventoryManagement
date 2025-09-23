@@ -6,7 +6,13 @@ module com.ecommerce {
     requires javafx.fxml;
     requires javafx.base;
     requires java.sql;
-   // requires com.ecommerce;
+    requires java.desktop;
+    requires layout;
+    requires kernel;
+    //requires com.ecommerce;
+    requires io;
+    requires org.slf4j;
+    // requires com.ecommerce;
     //requires static com.h2database;
 
     opens com.ecommerce to javafx.fxml;

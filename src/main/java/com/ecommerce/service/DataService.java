@@ -3,6 +3,7 @@ package com.ecommerce.service;
 import com.ecommerce.model.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -108,9 +109,7 @@ public class DataService {
         }
         return products;
     }
-
-
-    public static List<Order> getOrdersByCustomerName(String customerName) {
+    public static List<Order> getOrdersByCustomer(String customerName) {
         DatabaseService dbService = DatabaseService.getInstance();
         List<Order> orders = new ArrayList<>();
 
@@ -126,6 +125,43 @@ public class DataService {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, customerName);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                orders.add(new Order(
+                        rs.getString("order_id"),
+                        rs.getInt("customer_id"),
+                        rs.getString("product_id"),
+                        rs.getInt("quantity"),
+                        rs.getDouble("total_price"),
+                        rs.getString("order_date")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orders;
+    }
+
+    public static List<Order> getOrdersByCustomerName(String customerName, String phoneNumber) {
+        DatabaseService dbService = DatabaseService.getInstance();
+        List<Order> orders = new ArrayList<>();
+
+        String sql = """
+        SELECT o.order_id, o.customer_id, o.product_id, o.quantity,
+               o.total_price, o.order_date
+        FROM orders o
+        JOIN customers c ON o.customer_id = c.id
+        WHERE c.customer_name = ? and c.phone = ?
+    """;
+
+        try (Connection conn = dbService.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, customerName);
+            stmt.setString(2, phoneNumber);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -172,7 +208,6 @@ public class DataService {
             System.out.println("Processing order for product ID: " + productId + ", quantity: " + quantity);
             conn.setAutoCommit(false); // Start transaction
 
-            // 1️⃣ Get customer_id (insert if not exists)
             int customerId = -1;
             PreparedStatement findCustomer = conn.prepareStatement(
                     "SELECT id FROM customers WHERE customer_name = ? AND phone = ?");
@@ -229,15 +264,15 @@ public class DataService {
             updateStmt.executeUpdate();
 
             // 4️⃣ Insert into orders
-            String orderId = UUID.randomUUID().toString();
-            PreparedStatement insertStmt = conn.prepareStatement(
-                    "INSERT INTO orders (order_id, customer_id, product_id, quantity, total_price, order_date) VALUES (?, ?, ?, ?, ?, ?)");
+            String orderId = "ORD" + System.currentTimeMillis();
+            PreparedStatement insertStmt = conn.prepareStatement("INSERT INTO orders (order_id, customer_id, product_id, quantity, total_price, order_date) VALUES (?, ?, ?, ?, ?, ?)");
             insertStmt.setString(1, orderId);
             insertStmt.setInt(2, customerId);
             insertStmt.setString(3, productId);
             insertStmt.setInt(4, quantity);
             insertStmt.setDouble(5, price * quantity);
-            insertStmt.setString(6, new Timestamp(System.currentTimeMillis()).toString());
+            LocalDate today = LocalDate.now();
+            insertStmt.setString(6, today.toString());
             insertStmt.executeUpdate();
 
             conn.commit();
@@ -352,6 +387,46 @@ public class DataService {
             return false;
         }
     }
+    public static List<OrderDetails> getAllOrderDetailsinARange(String from,String to) {
+        DatabaseService dbService = DatabaseService.getInstance();
+        List<OrderDetails> list = new ArrayList<>();
+
+       // String query = ;
+
+        try (Connection conn = dbService.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT o.order_id, c.customer_name, c.phone AS phone_number, " +
+                             "o.product_id, p.product_name AS product_name, o.quantity, " +
+                             "o.total_price AS total_bill, o.order_date " +
+                             "FROM orders o " +
+                             "JOIN customers c ON c.id = o.customer_id " +
+                             "JOIN products p ON o.product_id = p.product_id " +
+                             "WHERE o.order_date between ? and ?")) {
+
+            stmt.setString(1, from);
+            stmt.setString(2, to);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    list.add(new OrderDetails(
+                            rs.getString("order_id"),
+                            rs.getString("customer_name"),
+                            rs.getString("phone_number"),
+                            rs.getString("product_id"),
+                            rs.getString("product_name"),
+                            rs.getInt("quantity"),
+                            rs.getDouble("total_bill"),
+                            rs.getString("order_date")
+                    ));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error fetching order details: " + e.getMessage());
+        }
+
+        return list;
+    }
 
     public static List<OrderDetails> getAllOrderDetails() {
         DatabaseService dbService = DatabaseService.getInstance();
@@ -363,7 +438,6 @@ public class DataService {
                 "FROM orders o " +
                 "JOIN customers c ON c.id = o.customer_id " +
                 "JOIN products p ON o.product_id = p.product_id";
-
         try (Connection conn = dbService.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {

@@ -1,5 +1,10 @@
 package com.ecommerce.command;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,7 +15,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class BackupCommand implements Command {
-
+    private static final Logger log = LoggerFactory.getLogger(BackupCommand.class);
+    @FXML
+    Label label;
     private static final String DB_FILE = "shop_management.db";
     private static final String BACKUP_ZIP = "./backup/ecommerce_backup.zip";
 
@@ -42,7 +49,7 @@ public class BackupCommand implements Command {
 
             zos.closeEntry();
         }
-
+        label.setText("Backup Successful");
         System.out.println("Backup ZIP created successfully: " + zipPath.toAbsolutePath());
     }
 }
