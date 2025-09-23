@@ -9,14 +9,28 @@
            fx:controller="com.ecommerce.controller.ControlPanelController"
            style="-fx-background-color: linear-gradient(to bottom, #eef2f3, #ffffff);">
 
-    <VBox alignment="CENTER" spacing="20">
+    <bottom>
+        <HBox alignment="TOP_RIGHT" style="-fx-padding: 15;">
+            <Button fx:id="backButton"
+                    onAction="#handleBack"
+                    text="Logout"
+                    prefHeight="35.0"
+                    prefWidth="100.0"
+                    style="-fx-background-color: linear-gradient(to right, #f44336, #c62828);
+                           -fx-text-fill: white;
+                           -fx-font-size: 13px;
+                           -fx-background-radius: 8;" />
+        </HBox>
+    </bottom>
 
-        <!-- Card Container -->
-        <VBox alignment="CENTER" spacing="15"
-              style="-fx-background-color: white;
-                     -fx-background-radius: 16;
-                     -fx-padding: 40 50;
-                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);">
+    <!-- Main content in center -->
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <VBox alignment="CENTER" spacing="15"
+                  style="-fx-background-color: white;
+                         -fx-background-radius: 16;
+                         -fx-padding: 40 50;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);">
 
             <!-- Title -->
             <Label text="Control Panel" textAlignment="CENTER">
