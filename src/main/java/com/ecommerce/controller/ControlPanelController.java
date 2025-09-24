@@ -70,8 +70,14 @@ public class ControlPanelController {
     }
     @FXML
     public void handleBackup() throws IOException {
-        Command backup = new BackupCommand();
-        backup.execute();
+        try {
+            Command backup = new BackupCommand();
+            backup.execute();
+            label.setText("Backup Successful");
+        } catch (Exception e) {
+            label.setText("Backup Failed : " + e.getMessage());
+            e.printStackTrace();
+        }
     }
     @FXML
     public void handleRestore() throws IOException {
