@@ -81,8 +81,15 @@ public class ControlPanelController {
     }
     @FXML
     public void handleRestore() throws IOException {
-        Command restore = new RestoreCommand();
-        restore.execute();
+        try {
+            Command restore = new RestoreCommand();
+            restore.execute();
+            label.setText("Restore Successful");
+        }
+        catch (Exception e) {
+            label.setText("Restore Failed : " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 }
