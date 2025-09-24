@@ -43,5 +43,11 @@ public class LoginController {
             errorLabel.setText("Invalid username or password");
         }
     }
-
+    @FXML
+    private void resetButton() throws IOException {
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/ecommerce/password_reset.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),600,400);
+        stage.setScene(scene);
+    }
 }

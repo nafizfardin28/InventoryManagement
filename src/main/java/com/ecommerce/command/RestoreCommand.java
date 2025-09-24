@@ -13,8 +13,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class RestoreCommand implements Command {
-    @FXML
-    Label label;
     private static final String BACKUP_ZIP = "./backup/ecommerce_backup.zip";
     private static final String DB_DIRECTORY = "./restore/";
 
@@ -54,7 +52,6 @@ public class RestoreCommand implements Command {
                 entry = zis.getNextEntry();
             }
         }
-        label.setText("Restore Successful");
         System.out.println("Database restored successfully to: " + DB_DIRECTORY);
     }
 }

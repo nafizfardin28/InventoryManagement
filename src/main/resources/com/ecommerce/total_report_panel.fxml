@@ -9,8 +9,6 @@
            style="-fx-background-color: linear-gradient(to bottom, #eef2f3, #ffffff);">
 
     <BorderPane maxWidth="800" maxHeight="500" style="-fx-padding: 30;">
-
-        <!-- Left Section -->
         <left>
             <VBox alignment="CENTER" prefWidth="300"
                   style="-fx-background-color: #2f2163;
@@ -24,7 +22,6 @@
             </VBox>
         </left>
 
-        <!-- Center Section -->
         <center>
             <VBox spacing="20" alignment="CENTER"
                   style="-fx-background-color: white;
@@ -32,7 +29,6 @@
                          -fx-padding: 30;
                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 12, 0, 0, 6);">
 
-                <!-- Date Pickers -->
                 <HBox spacing="10" alignment="CENTER">
                     <Label text="From:" style="-fx-font-weight: bold;"/>
                     <DatePicker fx:id="fromDatePicker" style="-fx-background-radius: 6px;"/>
@@ -49,7 +45,6 @@
                     <ChoiceBox fx:id="formatChoiceBox" style="-fx-background-radius: 6px;"/>
                 </HBox>
 
-                <!-- Action Button -->
                 <Button text="Generate Report" onAction="#handleTotalReport"
                         style="-fx-font-size: 14px;
                                -fx-font-weight: bold;
@@ -59,7 +54,6 @@
                                -fx-background-radius: 10;
                                -fx-cursor: hand;" />
 
-                <!-- Error / Status Label -->
                 <Label fx:id="totalLabel"
                        style="-fx-font-size: 12px; -fx-text-fill: red;" />
             </VBox>

@@ -58,11 +58,11 @@ public class TotalPdfExporter implements ReportExporter{
             totalQuantity += order.getQuantity();
         }
         Table summaryTable = new Table(UnitValue.createPercentArray(new float[]{1, 1})).useAllAvailableWidth();
-        summaryTable.addCell(new Cell().add(new Paragraph("Total Sales Amount").setBold()));
+        summaryTable.addCell(new Cell().add(new Paragraph("Total Sales Amount").setFont(fontNormal)));
         summaryTable.addCell(new Cell().add(new Paragraph(String.valueOf(SalesAmount))));
-        summaryTable.addCell(new Cell().add(new Paragraph("Total Orders").setBold()));
+        summaryTable.addCell(new Cell().add(new Paragraph("Total Orders").setFont(fontNormal)));
         summaryTable.addCell(new Cell().add(new Paragraph(String.valueOf(customerOrders.size()))));
-        summaryTable.addCell(new Cell().add(new Paragraph("Total Quantity Sold").setBold()));
+        summaryTable.addCell(new Cell().add(new Paragraph("Total Quantity Sold").setFont(fontNormal)));
         summaryTable.addCell(new Cell().add(new Paragraph(String.valueOf(totalQuantity))));
         summaryTable.setMarginBottom(20);
         document.add(summaryTable);

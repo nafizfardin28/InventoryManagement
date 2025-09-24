@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.12"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.ecommerce.controller.ControlPanelController"
-           style="-fx-background-color: linear-gradient(to bottom, #eef2f3, #ffffff);">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ecommerce.controller.ControlPanelController"
+            style="-fx-background-color: linear-gradient(to bottom, #eef2f3, #ffffff);">
 
     <bottom>
         <HBox alignment="TOP_RIGHT" style="-fx-padding: 15;">
@@ -32,65 +32,65 @@
                          -fx-padding: 40 50;
                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);">
 
-            <!-- Title -->
-            <Label text="Control Panel" textAlignment="CENTER">
-                <font>
-                    <Font name="Segoe UI Semibold" size="22.0" />
-                </font>
-                <style>
-                    -fx-text-fill: #2c3e50;
-                </style>
-            </Label>
+                <!-- Title -->
+                <Label text="Control Panel" textAlignment="CENTER">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="22.0" />
+                    </font>
+                    <style>
+                        -fx-text-fill: #2c3e50;
+                    </style>
+                </Label>
 
-            <!-- Buttons -->
-            <Button fx:id="viewProductsButton" onAction="#handleViewProducts" prefWidth="220"
-                    text="🛍 Place Order"
-                    style="-fx-background-color: linear-gradient(to right, #4CAF50, #43a047);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
+                <!-- Buttons -->
+                <Button fx:id="viewProductsButton" onAction="#handleViewProducts" prefWidth="220"
+                        text="🛍 Place Order"
+                        style="-fx-background-color: linear-gradient(to right, #4CAF50, #43a047);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10 20;" />
 
-            <Button fx:id="viewCustomersButton" onAction="#handleViewCustomers" prefWidth="220"
-                    text="👤 View Customers"
-                    style="-fx-background-color: linear-gradient(to right, #2196F3, #1976D2);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
+                <Button fx:id="viewCustomersButton" onAction="#handleViewCustomers" prefWidth="220"
+                        text="👤 View Customers"
+                        style="-fx-background-color: linear-gradient(to right, #2196F3, #1976D2);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10 20;" />
 
-            <Button fx:id="viewOrdersButton" onAction="#handleViewOrders" prefWidth="220"
-                    text="📦 View Orders"
-                    style="-fx-background-color: linear-gradient(to right, #FF9800, #f57c00);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
+                <Button fx:id="viewOrdersButton" onAction="#handleViewOrders" prefWidth="220"
+                        text="📦 View Orders"
+                        style="-fx-background-color: linear-gradient(to right, #FF9800, #f57c00);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10 20;" />
 
-            <Button fx:id="addExistingProductButton" onAction="#handleAddExistingProduct" prefWidth="220"
-                    text="➕ Add Existing Product"
-                    style="-fx-background-color: linear-gradient(to right, #3a72b7, #2c528c);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
+                <Button fx:id="addExistingProductButton" onAction="#handleAddExistingProduct" prefWidth="220"
+                        text="➕ Add Existing Product"
+                        style="-fx-background-color: linear-gradient(to right, #3a72b7, #2c528c);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10 20;" />
 
-            <Button fx:id="addProductButton" onAction="#handleAddProduct" prefWidth="220"
-                    text="➕ Add New Product"
-                    style="-fx-background-color: linear-gradient(to right, #673AB7, #512DA8);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
+                <Button fx:id="addProductButton" onAction="#handleAddProduct" prefWidth="220"
+                        text="➕ Add New Product"
+                        style="-fx-background-color: linear-gradient(to right, #673AB7, #512DA8);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10 20;" />
 
-            <Button onAction="#handleBackup" prefWidth="220"
-                    text="Backup Database"
-                    style="-fx-background-color: linear-gradient(to right, #983ab7, #6a1b9a);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 10;
-                           -fx-padding: 10 20;" />
-
+                <Button onAction="#handleBackup" prefWidth="220"
+                        text="Backup Database"
+                        style="-fx-background-color: linear-gradient(to right, #983ab7, #6a1b9a);
+                               -fx-text-fill: white;
+                               -fx-font-size: 14px;
+                               -fx-background-radius: 10;
+                               -fx-padding: 10 20;" />
+                <Label fx:id="label" style="-fx-font-size: 12px; -fx-font-style: italic;" textFill="red" />
                 <Button onAction="#handleRestore" prefWidth="220"
                         text="Restore Database"
                         style="-fx-background-color: linear-gradient(to right, #3ab7a8, #00897B);

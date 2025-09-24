@@ -52,14 +52,14 @@
 
             <!-- Action Buttons -->
             <HBox spacing="15" alignment="CENTER">
-                <Button fx:id="cartButton" onAction="#handleViewCart" text="🛍 View Cart"
+                <Button fx:id="cartButton" onAction="#handleViewCart" text="View Orders"
                         style="-fx-font-size: 14px;
                                -fx-padding: 10 20;
                                -fx-background-color: linear-gradient(to right, #f0ad4e, #ec9a21);
                                -fx-text-fill: white;
                                -fx-background-radius: 10;
                                -fx-cursor: hand;" />
-                <Button onAction="#handleOrder" text="➕ Add to Cart"
+                <Button onAction="#handleOrder" text="Place Order"
                         style="-fx-font-size: 14px;
                                -fx-padding: 10 20;
                                -fx-background-color: linear-gradient(to right, #28a745, #218838);

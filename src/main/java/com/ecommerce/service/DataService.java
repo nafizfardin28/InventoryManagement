@@ -11,7 +11,33 @@ import java.util.UUID;
 //import static com.ecommerce.service.DatabaseService;
 
 public class DataService {
+    public static User findUserbyName(String username) throws SQLException {
+        DatabaseService dbService = DatabaseService.getInstance();
+        System.out.println("Connecting "+dbService.getConnection());
+        Connection conn = dbService.getConnection(); // Do NOT close this connection
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "SELECT * FROM users WHERE username = ?")) {
+            stmt.setString(1, username);
+            System.out.println("Executing query to find user: " + username);
 
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                User user = new User(
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getBoolean("is_admin")
+                );
+                System.out.println("User found: " + user.getUsername());
+                return user;
+            } else {
+                System.out.println("No user found with username: " + username);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error finding user: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static User findUser(String username, String password) throws SQLException {
         DatabaseService dbService = DatabaseService.getInstance();
         System.out.println("Connecting "+dbService.getConnection());
@@ -39,6 +65,20 @@ public class DataService {
             e.printStackTrace();
         }
         return null;
+    }
+    public static boolean updatePassword(String username, String newPassword) throws SQLException {
+        DatabaseService dbService = DatabaseService.getInstance();
+        System.out.println("Connecting "+dbService.getConnection());
+        Connection conn = dbService.getConnection();
+        String sql = "UPDATE users SET password = ? WHERE username = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, newPassword);
+            stmt.setString(2, username);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0; // true if at least one row was updated
+        }
     }
     public static Customer findCustomer(String customer_name, String phone) throws SQLException {
         DatabaseService dbService = DatabaseService.getInstance();

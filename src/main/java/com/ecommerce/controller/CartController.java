@@ -49,10 +49,9 @@ public class CartController {
             return new SimpleDoubleProperty(total).asObject().asString();
         });
 
-
         removeColumn.setCellFactory(param -> new TableCell<Order,Void>() {
-            private final Button removeBtn = new Button("Remove");
 
+            private final Button removeBtn = new Button("Remove");
             {
                 removeBtn.setOnAction(e -> {
                     Order order = getTableView().getItems().get(getIndex());
@@ -68,8 +67,6 @@ public class CartController {
                     setGraphic(removeBtn);
                 }
             }
-
-
         });
 
         List<Order> orders = DataService.getOrdersByCustomer(username);
@@ -98,11 +95,9 @@ public class CartController {
                     return;
                 }
 
-                // Call DataService to update DB
                 boolean success = DataService.removeOrderQuantity(order, quantityToRemove);
 
                 if (success) {
-                    // Reload the table
                     orderTable.getItems().clear();
                     List<Order> updatedOrders = DataService.getOrdersByCustomer(Session.getCurrentCustomerName());
                     orderTable.getItems().addAll(updatedOrders);

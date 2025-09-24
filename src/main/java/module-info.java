@@ -12,6 +12,7 @@ module com.ecommerce {
     //requires com.ecommerce;
     requires io;
     requires org.slf4j;
+    requires javafx.graphics;
     // requires com.ecommerce;
     //requires static com.h2database;
 

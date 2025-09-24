@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.12"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.ecommerce.controller.LoginController"
-           style="-fx-background-color: linear-gradient(to bottom, #e0f7fa, #ffffff);">
+<StackPane style="-fx-background-color: linear-gradient(to bottom, #e0f7fa, #ffffff);" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecommerce.controller.LoginController">
 
     <VBox alignment="CENTER" spacing="25.0">
 
         <!-- Card Style Container -->
-        <VBox spacing="20.0" alignment="CENTER"
-              style="-fx-background-color: white;
-                     -fx-background-radius: 16;
-                     -fx-padding: 40 50;
-                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 6);">
+        <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white;                      -fx-background-radius: 16;                      -fx-padding: 40 50;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 6);">
 
             <!-- Title -->
-            <Label text="Welcome To IIT SuperShop" alignment="CENTER">
+            <Label alignment="CENTER" text="Welcome To IIT SuperShop">
                 <font>
                     <Font name="Segoe UI Semibold" size="20.0" />
                 </font>
@@ -32,37 +24,21 @@
             </Label>
 
             <!-- Username -->
-            <TextField fx:id="usernameField" promptText="Enter Username"
-                       style="-fx-background-radius: 10;
-                              -fx-padding: 10;
-                              -fx-border-color: #d0d7de;
-                              -fx-border-radius: 10;"
-                       maxWidth="250"/>
+            <TextField fx:id="usernameField" maxWidth="250" promptText="Enter Username" style="-fx-background-radius: 10;                               -fx-padding: 10;                               -fx-border-color: #d0d7de;                               -fx-border-radius: 10;" />
 
             <!-- Password -->
-            <PasswordField fx:id="passwordField" promptText="Enter Password"
-                           style="-fx-background-radius: 10;
-                                  -fx-padding: 10;
-                                  -fx-border-color: #d0d7de;
-                                  -fx-border-radius: 10;"
-                           maxWidth="250"/>
+            <PasswordField fx:id="passwordField" maxWidth="250" promptText="Enter Password" style="-fx-background-radius: 10;                                   -fx-padding: 10;                                   -fx-border-color: #d0d7de;                                   -fx-border-radius: 10;" />
 
             <!-- Login Button -->
-            <Button text="Login" onAction="#handleLogin"
-                    style="-fx-background-color: linear-gradient(to right, #4A90E2, #357ABD);
-                           -fx-text-fill: white;
-                           -fx-font-size: 14px;
-                           -fx-background-radius: 12;
-                           -fx-padding: 10 30;
-                           -fx-cursor: hand;">
+            <Button onAction="#handleLogin" style="-fx-background-color: linear-gradient(to right, #4A90E2, #357ABD);                            -fx-text-fill: white;                            -fx-font-size: 14px;                            -fx-background-radius: 12;                            -fx-padding: 10 30;                            -fx-cursor: hand;" text="Login">
                 <effect>
-                    <DropShadow color="#999999" offsetY="2" radius="4"/>
+                    <DropShadow color="#999999" offsetY="2" radius="4" />
                 </effect>
             </Button>
+         <Label onMouseClicked="#resetButton" text="Forgot Password?" style="-fx-text-fill:#555" />
 
             <!-- Error Label -->
-            <Label fx:id="errorLabel" textFill="red"
-                   style="-fx-font-size: 12px; -fx-font-style: italic;" />
+            <Label fx:id="errorLabel" style="-fx-font-size: 12px; -fx-font-style: italic;" textFill="red" />
 
         </VBox>
     </VBox>

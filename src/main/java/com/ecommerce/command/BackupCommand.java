@@ -16,8 +16,6 @@ import java.util.zip.ZipOutputStream;
 
 public class BackupCommand implements Command {
     private static final Logger log = LoggerFactory.getLogger(BackupCommand.class);
-    @FXML
-    Label label;
     private static final String DB_FILE = "shop_management.db";
     private static final String BACKUP_ZIP = "./backup/ecommerce_backup.zip";
 
@@ -46,10 +44,8 @@ public class BackupCommand implements Command {
             while ((length = fis.read(buffer)) > 0) {
                 zos.write(buffer, 0, length);
             }
-
             zos.closeEntry();
         }
-        label.setText("Backup Successful");
         System.out.println("Backup ZIP created successfully: " + zipPath.toAbsolutePath());
     }
 }
