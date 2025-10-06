@@ -1,53 +1,68 @@
-🏪 IIT Super Shop Management System
+🏪 IIT Super Shop Management System – Efficiency in Every Transaction
 
-Efficiency in Every Transaction
+IIT Super Shop is an SPL-2 desktop-based JavaFX project designed to streamline the daily operations of a retail environment. It allows admins and employees to manage products, handle customer orders, and generate insightful reports — all through a clean, secure, and interactive graphical interface.
 
-IIT Super Shop is a desktop-based JavaFX project developed as part of the Design Patterns course. It provides a streamlined platform for managing products, orders, and users with role-based access. The system includes features such as product management, order tracking, and report generation, offering a fast, secure, and user-friendly experience for admins, employees, and customers.
-
-⚙️ Features
+This system ensures smooth workflow automation using core software engineering design patterns and provides robust data management through SQLite integration
+✨ Features
 🧑‍💼 User Authentication
 
-Role-based login system (Admin, Employee)
+Two distinct roles: Admin and Employee
 
-Secure password storage
+Secure login system
 
-No registration — credentials managed by the admin
+Role-based access control
 
-Role-specific dashboards
+Intuitive dashboards for both user types
 
-🛒 Product & Inventory Management
+🛒 Order Management
 
-Add, edit, delete products
+Both Admin and Employee can:
 
-Update stock quantity using + and – buttons
+Place orders
 
-Prevent duplicate product entries
+View order history
+
+View customer details
+
+Automatic calculation of total bills
+
+📦 Product Management (Admin Only)
+
+Add new products
+
+Update stock quantities
+
+Delete existing products
+
+Prevent duplicate entries
 
 Real-time product list updates
 
-📦 Order Management
+⚠️ Stock Alert System
 
+Real-time stock notifications
 
+Implemented using the Observer Pattern
 
-Employees can view and process orders
-
-Automatic calculation of total price and order details
+Notifies admin when a product’s stock level is critically low
 
 📊 Report Generation
 
-Generate sales reports between two selected dates
+Generate Sales Reports within a specific date range
 
-Export reports as PDF or CSV
+Export reports in PDF or CSV format
 
-Automatically filter orders from the database using the date range
+Beautifully formatted PDF with order tables and summaries
 
-Professionally formatted PDF reports with titles, headers, and total summaries
+Implemented using the Bridge and Builder Patterns
 
-📁 Dashboard Systems
+💾 Database Management
 
-Admin Dashboard: Manage products, users, and reports
+Centralized database connection using the Singleton Pattern
 
-Employee Dashboard: View and handle orders
+Local SQLite database for persistent storage
+
+Backup and restore functionality implemented using the Command Pattern
 
 🧠 Tech Stack
 Frontend (UI Layer)
@@ -60,169 +75,185 @@ CSS Styling
 
 MVC Architecture
 
-Backend (Logic & Database Layer)
+Backend (Logic Layer)
 
 Java
 
-SQLite Database
+Design Patterns:
 
-JDBC (Java Database Connectivity)
+Singleton Pattern – Database Connection
 
-iText PDF Library (for PDF generation)
+Observer Pattern – Stock Alerts
 
-OpenCSV (for CSV export)
+Bridge + Builder Patterns – Report Generation
 
-📂 Project Structure
-IITSuperShop/
-├── src/
-│   ├── com/ecommerce/
-│   │   ├── controller/      # JavaFX Controllers
-│   │   ├── model/           # Data Models (Product, Order, User)
-│   │   ├── database/        # Database connection logic
-│   │   ├── report/          # Report generation (PDF/CSV)
-│   │   └── main/            # Application entry point
-│   └── resources/
-│       ├── fxml/            # FXML layout files
-│       ├── css/             # Stylesheets
-│       └── images/          # UI assets
-├── database/
-│   └── shop.db              # SQLite database file
-└── pom.xml                  # Maven build configuration
+Command Pattern – Database Backup and Restore
 
-🚀 Getting Started
-Prerequisites
-
-Java 17+
-
-Maven
-
-JavaFX SDK
+Database Layer
 
 SQLite
 
-Installation
+JDBC
+
+Project Structure
+IITSuperShop/
+├── src/
+│   ├── com/ecommerce/
+│   │   ├── controller/       # JavaFX Controllers
+│   │   ├── model/            # Models (Product, Order, User)
+│   │   ├── database/         # Singleton Database Connection
+│   │   ├── observer/         # Observer pattern for stock alerts
+│   │   ├── command/          # Backup and restore commands
+│   │   ├── report/           # Bridge & Builder pattern reports
+│   │   └── main/             # Application Entry Point
+│   └── resources/
+│       ├── fxml/             # FXML layout files
+│       ├── css/              # Stylesheets
+│       └── images/           # App icons and assets
+├── database/
+│   └── shop.db               # SQLite database file
+└── pom.xml                   # Maven configuration
+🚀 Getting Started
+🧩 Prerequisites
+
+Java 17 or later
+
+Maven
+
+SQLite
+
+JavaFX SDK
+
+🧱 Installation
 1️⃣ Clone the Repository
 git clone https://github.com/your-username/IITSuperShop.git
 cd IITSuperShop
-
-2️⃣ Build the Project
 mvn clean install
+⚙️ Environment Setup
 
-3️⃣ Run the Application
+No .env file is required.
+The database is automatically initialized at runtime using the Singleton Database Handler.
 
-Via IDE:
-Run Main.java directly.
+💼 Features in Detail
+👨‍💼 Admin
 
-Via Terminal:
+Full control over products (add, update, delete)
 
-mvn javafx:run
+Can place and view orders
 
-⚙️ Environment Configuration
+Can view all customers and transactions
 
-No external .env file is required.
-However, ensure that the SQLite database file (shop.db) is placed in the correct directory.
+Generate and export reports
 
-🧾 Features in Detail
-👥 For Admins
+Restore or back up the database
 
-Manage products (add, update, remove)
+👨‍🔧 Employee
 
-Adjust stock quantities
+Can place and view orders
 
-Generate and export reports (PDF/CSV)
+Can view customer details
 
-Manage employee and customer records
+Can generate reports
 
-👨‍💻 For Employees
+Restricted access — cannot modify or delete products
 
-View product list
+🧩 Design Patterns Used
+Pattern	Purpose	Implementation Example
+Singleton	Ensures one instance of database connection	DatabaseConnection.getInstance()
+Observer	Monitors product stock levels	Stock alert notifications
+Bridge + Builder	Flexible and extendable report generation	PDF/CSV Report Export
+Command	Undoable database backup and restore	BackupCommand, RestoreCommand
+📅 Report Generation
 
-Process customer orders
+Reports can be generated by selecting a date range (From–To)
 
-View order list and details
+Orders within that range are fetched from the database
 
-🔒 Security Features
+Data is displayed and exported as:
 
-Role-based access control
+PDF – Professionally formatted, color-coded report
 
-Input validation and SQL protection
+CSV – Structured spreadsheet data
 
-Restricted access for employees and customers
+PDF generation supports:
 
-Date validation for report generation
+Custom fonts and colors
 
-🧭 Report Generation
-📅 How It Works
+Tables with headers
 
-User selects From Date and To Date using JavaFX DatePicker.
+Summary sections
 
-Orders are filtered from the database where
+🧾 Database Backup & Restore
 
-order_date BETWEEN fromDate AND toDate
+Implemented using the Command Pattern
 
+Admin can back up current data or restore from a previous snapshot
 
-Results are formatted and exported as:
+Provides safety against accidental data loss
 
-PDF Report — Styled table format with header and totals.
+🔐 Security Features
 
-CSV Report — Spreadsheet-friendly data output.
+Role-based user access control
 
+Validations for empty input and date ranges
 
-🖥️ Demo UI Highlights
-Login Screen
+Safe SQL queries to prevent injection
 
-Simple login with role-based redirection.
+Encrypted backup files
 
-Admin Dashboard
+🖥️ User Interface Overview
 
-Product management and report generation tools.
+Left Panel: IIT Super Shop branding
 
+Right Panel: Report generation tools with date range and file type options
+
+Clean, responsive JavaFX layout with dynamic content loading
 
 📈 Future Enhancements
 
-Graphical sales analytics (bar/line charts)
+Add customer registration & authentication
 
-Password encryption using BCrypt
+Implement real-time charts for sales visualization
 
-Cloud-based synchronization
+Add product image support
 
-Enhanced UI with animations and themes
+Integrate email notifications for low stock alerts
+
+Multi-user session handling
 
 🤝 Contributing
 
-Fork the repository
+Fork this repository
 
-Create a new feature branch:
+Create your feature branch
 
 git checkout -b feature/AmazingFeature
 
 
-Commit your changes:
+Commit your changes
 
-git commit -m "Add AmazingFeature"
+git commit -m "Add some AmazingFeature"
 
 
-Push to your branch and open a pull request
+Push your branch and open a Pull Request
 
 🪪 License
 
-This project is licensed under the MIT License — see the LICENSE
- file for details.
+This project is licensed under the MIT License — see the LICENSE file for details.
 
-👏 Acknowledgments
+🙏 Acknowledgments
 
-Built using JavaFX, Maven, and SQLite
+Built with JavaFX and Maven
 
-PDF generation powered by iText
+PDF generation powered by iText 7
 
 CSV export using OpenCSV
 
-UI designed with FXML and CSS
+SQLite integration through JDBC
 
-Developed under the supervision of Dr. Mohammad Shoyaib, Professor, IIT, DU
 
-🧑‍💻 Developed By
+👨‍💻 Developed By
 
 Nafiz Mahmud Fardin
-Institute of Information Technology (IIT),
-University of Dhaka
+Institute of Information Technology (IIT), University of Dhaka
+
